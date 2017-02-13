@@ -1,0 +1,78 @@
+@* studentlist Template File *@
+@(student: List[Student])
+
+<html>
+	<head>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">	</head>
+	<body>
+	<div class="row">
+
+	</div>
+	<div class="row">
+		<div class="col-xs-1">
+			<form action="top" method="GET">
+				<input type="submit" value="トップ">
+			</form>
+		</div>
+		<div class="col-xs-1">
+			<form action="schedulelist" method="GET">
+				<input type="submit" value="日程一覧">
+			</form>
+		</div>
+		<div class="col-xs-10">
+
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-1">
+			<form action="subjectlist" method="GET">
+				<input type="submit" value="科目一覧">
+			</form>
+		</div>
+	</div>
+	<div class="row">
+		<h1 class="text-center">学生一覧</h1>
+
+	<table class="table table-bordered">
+	<tr>
+		<th class="text-center">学籍番号</th>
+		<th class="text-center">学年</th>
+		<th class="text-center">学生氏名</th>
+		<th class="text-center">メールアドレス</th>
+		<th class="text-center">在籍状況</th>
+	</tr>
+
+	@for(students <- student){
+		<tr>
+		<td class="text-center">@students.getStudent_id()</td>
+		<td class="text-center">@students.getStudent_year()</td>
+		<td class="text-center">@students.getStudent_name()</td>
+		<td class="text-center">@students.getMail_address()</td>
+		<td class="text-center">@students.getEnrollment</td>
+		<td class="text-center">
+			<form action="textcourseresult" method="GET">
+				<input type="submit" value="テキスト履修">
+			</form>
+		</td >
+		<td class="text-center">
+			<form action="mediacourseresult" method="GET">
+				<input type="submit" value="メディア履修">
+			</form>
+		</td>
+		<td class="text-center">
+			<form action="gradelist" method="GET">
+				<input type="submit" value="成績一覧">
+			</form>
+		</td>
+		<td class="text-center">
+			<form action="updatestudent" method="GET">
+				<input type="submit" value="更新">
+			</form>
+		</td>
+		</tr>
+	}
+
+	</table>
+	</div>
+	</body>
+</html>
